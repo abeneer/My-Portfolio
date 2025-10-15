@@ -1,0 +1,223 @@
+/* === Tailwind & font === */
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;700;800&display=swap');
+
+
+/* Smooth anchor scrolling */
+html { scroll-behavior: smooth; }
+
+/* ------------------ THEME TOKENS ------------------ */
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --radius-xl: 1rem;
+}
+
+:root {
+  color-scheme: dark light;
+  --bg: #000000ef;
+  --fg: #e5e7eb;
+  --dock-h: 15rem;
+}
+
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --fg: #111827;
+}
+
+html, body { min-height: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--fg);
+  /* subtle background texture */
+  background-image:
+    radial-gradient(900px 600px at 10% -10%, rgb(99 102 241 / 0.14), transparent),
+    radial-gradient(800px 500px at 110% 10%, rgb(59 130 246 / 0.12), transparent);
+  background-attachment: fixed;
+}
+
+.container {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+/* Visible focus ring */
+:where(a,button,input,textarea,select):focus-visible {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 2px;
+}
+
+/* ------------------ HERO DECOR ------------------ */
+.dot {
+  position: absolute;
+  border-radius: 9999px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+/* Typewriter line */
+.typewriter {
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: .12em solid rgba(255,255,255,.75);
+  animation: typing 2.2s steps(22, end) .2s 1 both, blink .9s step-end infinite;
+}
+@keyframes typing { from { width: 0 } to { width: 22ch } }
+@keyframes blink  { 50% { border-color: transparent } }
+
+/* ------------------ SECTION HEADING ------------------ */
+.heading-neo{
+  font-family: "Tomorrow", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .01em;
+  font-size: clamp(2.25rem, 4.5vw, 4.5rem);
+  background-image: linear-gradient(90deg,#8b5cf6 0%,#6366f1 45%,#3b82f6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 12px rgba(99,102,241,.28));
+}
+.heading-neo-overlay { font: inherit; }
+
+.dot-left,
+.dot-right{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: .9rem;
+  height: .9rem;
+  border-radius: 9999px;
+  opacity: .95;
+}
+.dot-left{
+  left: -1.75rem;
+  background: #3b82f6;
+  box-shadow: 0 0 18px rgba(59,130,246,.55);
+}
+.dot-right{
+  right: -1.75rem;
+  background: #8b5cf6;
+  box-shadow: 0 0 18px rgba(139,92,246,.55);
+}
+
+.neon-underline{
+  position: relative;
+  width: 7rem;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, #8b5cf6, #6366f1, #3b82f6, transparent);
+  filter: drop-shadow(0 0 10px rgba(99,102,241,.45));
+}
+.neon-underline::before,
+.neon-underline::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  border-radius: 999px;
+  background: inherit;
+  opacity: .55;
+  filter: blur(.6px);
+}
+.neon-underline::before{ top: -6px; }
+.neon-underline::after { bottom: -6px; }
+
+/* ------------------ GLASS UTILITIES ------------------ */
+/* .glass {
+  background: rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 10px 30px rgba(2, 8, 23, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+}
+
+.glass-edge {
+  position: relative;
+  overflow: hidden;
+}
+.glass-edge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 60% at 10% 0%, rgba(255,255,255,.06), transparent 60%),
+    radial-gradient(120% 60% at 90% 100%, rgba(255,255,255,.05), transparent 60%);
+  opacity: .5;
+} */
+
+/* “Neo” card look for skill cards */
+/* .card-neo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: rgba(16, 18, 21, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+}
+.card-neo .overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.card-neo .overlay::before,
+.card-neo .overlay::after {
+  content: "";
+  position: absolute;
+  width: 130%;
+  height: 130%;
+  filter: blur(0.2px);
+}
+.card-neo .overlay::before {
+  left: -20%;
+  top: -25%;
+  background: radial-gradient(900px 500px at 20% -10%, rgba(255,255,255,0.16), transparent 60%);
+}
+.card-neo .overlay::after {
+  right: -15%;
+  bottom: -20%;
+  background: radial-gradient(900px 500px at 110% 95%, rgba(255,255,255,0.12), transparent 60%);
+}
+.card-neo .inner-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+  pointer-events: none;
+} */
+
+/* ------------------ SKILLS MARQUEE ------------------ */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0, black 6rem, black calc(100% - 6rem), transparent 100%);
+}
+.marquee-track {
+  display: flex;
+  gap: 2.5rem;
+  width: max-content;
+  animation: marquee-left var(--marquee-duration, 30s) linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+
