@@ -1,6 +1,6 @@
 // src/components/SkillCard.tsx
 import React from "react";
-import SkillsCard from "./SkillsCard";
+import SkillsCard from "./SkillsSetCard";
 
 type Item = { label: string; color?: "blue" | "green" | "slate" | "orange" | "yellow" | "pink" | "violet" };
 type Props = {

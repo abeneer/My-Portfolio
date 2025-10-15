@@ -1,11 +1,20 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FiHome, FiTool, FiBook, FiFolder, FiAward, FiStar,
   FiMail, FiDownload, FiSun, FiMaximize
 } from "react-icons/fi";
 
+// ✅ Fix: Explicitly import React and use React.ReactNode instead of JSX.Element
+type DockItem = {
+  href?: string;
+  label: string;
+  icon: React.ReactNode;
+  download?: boolean;
+  action?: "theme" | "fullscreen"; // only these two actions exist
+};
+
 /** Menu config */
-const ITEMS = [
+const ITEMS: DockItem[] = [
   { href: "#home", label: "Home", icon: <FiHome /> },
   { href: "#skills", label: "Skills", icon: <FiTool /> },
   { href: "#education", label: "Education", icon: <FiBook /> },
@@ -14,9 +23,9 @@ const ITEMS = [
   { href: "#featured", label: "Featured", icon: <FiStar /> },
   { href: "#contact", label: "Contact", icon: <FiMail /> },
   { href: "/resume.pdf", label: "Download CV", icon: <FiDownload />, download: true },
-  { href: "#theme", label: "Theme", icon: <FiSun />, action: "theme" },
-  { href: "#fullscreen", label: "Fullscreen", icon: <FiMaximize />, action: "fullscreen" },
-] as const;
+  { label: "Theme", icon: <FiSun />, action: "theme" },
+  { label: "Fullscreen", icon: <FiMaximize />, action: "fullscreen" },
+];
 
 /** Circle styles */
 const itemClasses = (active: boolean) =>
@@ -25,29 +34,42 @@ const itemClasses = (active: boolean) =>
     "border border-white/12 bg-[rgba(16,22,35,.55)] text-white/85",
     "transition duration-200 ease-out will-change-transform hover:-translate-y-0.5",
     "hover:ring hover:ring-[rgba(99,102,241,.45)] hover:bg-[rgba(40,48,75,.65)]",
-    active ? "text-white ring-2 ring-[rgba(99,102,241,.65)] bg-gradient-to-b from-indigo-500/75 to-violet-500/75" : "",
+    active
+      ? "text-white ring-2 ring-[rgba(99,102,241,.65)] bg-gradient-to-b from-indigo-500/75 to-violet-500/75"
+      : "",
     "after:pointer-events-none after:absolute after:inset-0 after:rounded-full after:transition",
-    active ? "after:shadow-[0_0_26px_rgba(99,102,241,.45)]" : "after:shadow-[0_0_18px_rgba(99,102,241,.28)] hover:after:opacity-100 after:opacity-0",
+    active
+      ? "after:shadow-[0_0_26px_rgba(99,102,241,.45)]"
+      : "after:shadow-[0_0_18px_rgba(99,102,241,.28)] hover:after:opacity-100 after:opacity-0",
     "before:absolute before:inset-[2px] before:rounded-full before:bg-black/10 before:opacity-0 group-hover:before:opacity-100 before:transition",
-  ].filter(Boolean).join(" ");
+  ]
+    .filter(Boolean)
+    .join(" ");
 
 export default function DockGlass() {
   const [active, setActive] = useState<string>("#home");
 
   // Scroll spy
   useEffect(() => {
-    const ids = ITEMS.map(i => i.href).filter(h => h.startsWith("#")).map(h => h.slice(1));
-    const els = ids.map(id => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+    const ids = ITEMS.map(i => i.href)
+      .filter((h): h is string => Boolean(h && h.startsWith("#")))
+      .map(h => h.slice(1));
+
+    const els = ids
+      .map(id => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
     const obs = new IntersectionObserver(
       entries => entries.forEach(e => e.isIntersecting && setActive(`#${e.target.id}`)),
       { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 }
     );
+
     els.forEach(el => obs.observe(el));
     return () => obs.disconnect();
   }, []);
 
   // Actions
-  const onAction = (key?: string) => {
+  const onAction = (key?: "theme" | "fullscreen") => {
     if (key === "theme") {
       const root = document.documentElement;
       const cur = root.getAttribute("data-theme") === "light" ? "dark" : "light";
@@ -55,7 +77,8 @@ export default function DockGlass() {
       localStorage.setItem("theme", cur);
     }
     if (key === "fullscreen") {
-      if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {});
+      if (!document.fullscreenElement)
+        document.documentElement.requestFullscreen().catch(() => {});
       else document.exitFullscreen().catch(() => {});
     }
   };
@@ -97,21 +120,45 @@ export default function DockGlass() {
                     )}
 
                     {it.action ? (
-                      <button onClick={() => onAction(it.action)} title={it.label} className={itemClasses(isActive)}>
-                        <span className={(isActive ? "text-white " : "text-white/80 ") + "text-xl md:text-2xl transition-colors group-hover:text-white"}>
+                      <button
+                        onClick={() => onAction(it.action)}
+                        title={it.label}
+                        className={itemClasses(isActive)}
+                      >
+                        <span
+                          className={
+                            (isActive ? "text-white " : "text-white/80 ") +
+                            "text-xl md:text-2xl transition-colors group-hover:text-white"
+                          }
+                        >
                           {it.icon}
                         </span>
-                        {/* tooltip */}
-                        <span className="pointer-events-none absolute bottom-full mb-2 left-1/2 -translate-x-1/2 rounded-md border border-white/10 bg-black/75 backdrop-blur px-2 py-1 text-[11px] leading-none text-white/90 opacity-0 translate-y-1 transition group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0 whitespace-nowrap" role="tooltip">
+                        <span
+                          className="pointer-events-none absolute bottom-full mb-2 left-1/2 -translate-x-1/2 rounded-md border border-white/10 bg-black/75 backdrop-blur px-2 py-1 text-[11px] leading-none text-white/90 opacity-0 translate-y-1 transition group-hover:opacity-100 group-hover:translate-y-0 whitespace-nowrap"
+                          role="tooltip"
+                        >
                           {it.label}
                         </span>
                       </button>
                     ) : (
-                      <a href={it.href} download={it.download} title={it.label} className={itemClasses(isActive)}>
-                        <span className={(isActive ? "text-white " : "text-white/80 ") + "text-xl md:text-2xl transition-colors group-hover:text-white"}>
+                      <a
+                        href={it.href}
+                        download={it.download}
+                        title={it.label}
+                        className={itemClasses(isActive)}
+                      >
+                        <span
+                          className={
+                            (isActive ? "text-white " : "text-white/80 ") +
+                            "text-xl md:text-2xl transition-colors group-hover:text-white"
+                          }
+                        >
                           {it.icon}
                         </span>
-                        <span className="pointer-events-none absolute bottom-full mb-2 left-1/2 -translate-x-1/2 rounded-md border border-white/10 bg-black/75 backdrop-blur px-2 py-1 text-[11px] leading-none text-white/90 opacity-0 translate-y-1 transition group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0 whitespace-nowrap" role="tooltip">
+                        <span
+                          className="pointer-events-none absolute bottom-full mb-2 left-1/2 -translate-x-1/2 rounded-md border border-white/10 bg-black/75 backdrop-blur px-2 py-1 text-[11px] leading-none text-white/90 opacity-0 translate-y-1 transition group-hover:opacity-100 group-hover:translate-y-0 whitespace-nowrap"
+                          role="tooltip"
+                        >
                           {it.label}
                         </span>
                       </a>
