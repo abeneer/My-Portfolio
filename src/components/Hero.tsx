@@ -39,7 +39,7 @@ export default function Hero() {
             height: 85,
             right: "36.6%",
             top: "30%",
-            background: "rgb(59 130 246 / 0.18)", // ✅ closed )
+            background: "rgb(59 130 246 / 0.18)", 
           }}
         />
         <div
@@ -49,7 +49,7 @@ export default function Hero() {
             height: 86,
             left: "83%",
             top: "66%",
-            background: "rgb(59 130 246 / 0.18)", // ✅ closed )
+            background: "rgb(59 130 246 / 0.18)", 
           }}
         />
         <div
@@ -165,7 +165,7 @@ export default function Hero() {
           <div
             className="relative overflow-hidden rounded-full border-[6px]"
             style={{
-              borderColor: "#3b82f6",                 // blue ring
+              borderColor: "#3b82f6",                 
               boxShadow: "0 0 30px rgba(59,130,246,.35)", // soft blue glow
             }}
           >
