@@ -7,8 +7,8 @@ export const profile = {
     // location: "London, UK",
     // availability: "Open to full-time & freelance",
     email: "absaipogu@gmail.com",
-    github: "https://github.com/your-handle",
-    linkedin: "https://linkedin.com/in/your-handle",
-    resumeUrl: "/Abeneer_Saipogu_Resume.pdf", 
+    github: "https://github.com/abeneer",
+    linkedin: "https://www.linkedin.com/in/abeneer-saipogu/",
+    resumeUrl: "/Abeneer_saipogu_Full Stack Developer – GenAI : LLM.pdf", 
   };
   

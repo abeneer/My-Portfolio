@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {
-  FiHome, FiTool, FiBook, FiFolder, FiAward, FiStar,
-  FiMail, FiDownload, FiSun, FiMaximize
+  FiHome, FiTool, FiBook, FiFolder, FiAward,
+  FiMail, FiDownload, FiSun, FiMaximize,
+  FiBriefcase
 } from "react-icons/fi";
 
 // ✅ Fix: Explicitly import React and use React.ReactNode instead of JSX.Element
@@ -18,11 +19,11 @@ const ITEMS: DockItem[] = [
   { href: "#home", label: "Home", icon: <FiHome /> },
   { href: "#skills", label: "Skills", icon: <FiTool /> },
   { href: "#education", label: "Education", icon: <FiBook /> },
+  { href: "#experience", label: "Experience", icon: <FiBriefcase /> },
   { href: "#projects", label: "Projects", icon: <FiFolder /> },
   { href: "#awards", label: "Awards", icon: <FiAward /> },
-  { href: "#featured", label: "Featured", icon: <FiStar /> },
   { href: "#contact", label: "Contact", icon: <FiMail /> },
-  { href: "/resume.pdf", label: "Download CV", icon: <FiDownload />, download: true },
+  { href: "/Abeneer_saipogu_Full Stack Developer – GenAI : LLM.pdf", label: "Download CV", icon: <FiDownload />, download: true },
   { label: "Theme", icon: <FiSun />, action: "theme" },
   { label: "Fullscreen", icon: <FiMaximize />, action: "fullscreen" },
 ];
