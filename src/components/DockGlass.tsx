@@ -23,7 +23,7 @@ const ITEMS: DockItem[] = [
   { href: "#projects", label: "Projects", icon: <FiFolder /> },
   { href: "#awards", label: "Awards", icon: <FiAward /> },
   { href: "#contact", label: "Contact", icon: <FiMail /> },
-  { href: "/Abeneer_saipogu_Full Stack Developer – GenAI : LLM.pdf", label: "Download CV", icon: <FiDownload />, download: true },
+  { href: "/Abeneer_S.pdf", label: "Download CV", icon: <FiDownload />, download: true },
   { label: "Theme", icon: <FiSun />, action: "theme" },
   { label: "Fullscreen", icon: <FiMaximize />, action: "fullscreen" },
 ];

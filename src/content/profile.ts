@@ -9,6 +9,6 @@ export const profile = {
     email: "absaipogu@gmail.com",
     github: "https://github.com/abeneer",
     linkedin: "https://www.linkedin.com/in/abeneer-saipogu/",
-    resumeUrl: "/Abeneer_saipogu_Full Stack Developer – GenAI : LLM.pdf", 
+    resumeUrl: "/Abeneer_S.pdf", 
   };
   

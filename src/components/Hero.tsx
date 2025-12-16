@@ -6,7 +6,7 @@ import {
   FiDownload,
 } from "react-icons/fi";
 import { profile } from "../content/profile";
-import avatar from "../assets/profile.png";
+import avatar from "../assets/Profile_pic.png";
 import RoleTypewriter from "./RoleTypewriter";
 import Aurora from "./Aurora";
 

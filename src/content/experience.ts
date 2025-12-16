@@ -1,6 +1,20 @@
 export const experience = [
   {
     id: 1,
+    company: "Unify-Giving",
+    role: "Front-end Developer(Volunteer)",
+    period: "October 2025 - Present",
+    description: [
+      "Developed applications using TypeScript, improving user response time by 30%",
+      "Collaborated on API integrations in weekly sprints, aligning team and client requirements effectively",
+      "Delivered responsive, accessible interfaces, ensuring a robust user experience.",
+    ],
+      skills: ["TypeScript, NotionAI", "React"],
+
+      
+  },
+  {
+    id: 2,
     company: "Zencraft Consultancy Pvt Ltd",
     role: "Web Developer",
     period: "October 2023 – December 2024",
@@ -12,7 +26,7 @@ export const experience = [
     skills: ["HTML", "CSS", "JavaScript", "Node.js", "React", "MySQL"],
   },
   {
-    id: 2,
+    id: 3,
     company: "Verzeo",
     role: "Python + MongoDB Intern",
     period: "July 2023 – October 2024",
@@ -23,4 +37,5 @@ export const experience = [
     ],
     skills: ["Python", "MongoDB"],
   },
+
 ];
