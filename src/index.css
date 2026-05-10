@@ -157,3 +157,25 @@ body {
 }
 
 
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  opacity: 0;
+  animation: slideUpFade 0.7s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-up {
+    opacity: 1;
+    animation: none;
+  }
+}

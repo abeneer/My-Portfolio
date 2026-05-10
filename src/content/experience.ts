@@ -5,9 +5,9 @@ export const experience = [
     role: "Front-end Developer(Volunteer)",
     period: "October 2025 - Present",
     description: [
-      "Developed applications using TypeScript, improving user response time by 30%",
-      "Collaborated on API integrations in weekly sprints, aligning team and client requirements effectively",
-      "Delivered responsive, accessible interfaces, ensuring a robust user experience.",
+      "Improved page load performance by 30% by refactoring React components, introducing lazy loading, and optimising bundle size from 2.1MB to 1.4MB, directly enhancing user experience for 500+ monthly active users",
+      "Integrated AI tools (GitHub Copilot, ChatGPT) into development workflow for design, implementation, and testing, accelerating feature delivery by 40% while maintaining high code quality standards.",
+      "Implemented CI/CD pipelines using Docker and GitHub Actions, reducing deployment time from 45 minutes to 8 minutes and eliminating manual deployment errors",
     ],
       skills: ["TypeScript, NotionAI", "React"],
 
@@ -19,9 +19,9 @@ export const experience = [
     role: "Web Developer",
     period: "October 2023 – December 2024",
     description: [
-      "Built 8+ responsive web applications using React and Node.js, improving client engagement by 40%.",
-      "Developed REST APIs with Node.js, enhancing data access efficiency through standardisation.",
-      "Implemented CI/CD pipelines using GitHub Actions, accelerating delivery cycles by 25%.",
+      "Developed client-facing web applications using JavaScript, HTML5, and CSS3, increasing client engagement by 40% through improved UX design and faster page load times",
+      "Collaborated with cross-functional teams to gather requirements and author user stories, ensuring alignment between technical implementation and business objectives.",
+      "Delivered 15+ projects on time by working with initiative and tenacity in a fast-paced agency environment. ",
     ],
     skills: ["HTML", "CSS", "JavaScript", "Node.js", "React", "MySQL"],
   },

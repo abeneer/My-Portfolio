@@ -13,6 +13,29 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+
+  {
+    slug: "ai-brochure-builder",
+    title: "AI Brochure Builder",
+    summary: "An AI-powered full-stack web application that analyzes company websites and generates professional business brochures in real time using OpenAI streaming, web scraping, markdown rendering, caching, and PDF export.",
+    category: "AI / Full Stack",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "OpenAI API",
+      "AI",
+      "Web Scraping",
+      "Streaming",
+      "Tailwind CSS",
+      "Markdown",
+      "PDF Export",
+      "Caching",
+    ],
+    demo: "https://ai-brochure-builder.vercel.app/",
+    repo: "https://github.com/abeneer/ai-brochure-builder",
+    thumb: "/thumbs/ai-brochure.png",
+    
+  },
   {
     slug: "to-do-list-app",
     title: "To-Do List App",
